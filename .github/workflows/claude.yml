@@ -39,8 +39,8 @@ jobs:
             "log": true,
             "NON_INTERACTIVE_MODE": true,
             "OLLAMA_API_KEY": "${{ secrets.OLLAMA_API_KEY }}",
-            "ANTHROPIC_BASE_URL": "https://ollama.com",
-            "OPENAI_MODEL": "minimax-m2.5cloud"
+            "OPENAI_BASE_URL": "https://ollama.com",
+            "OPENAI_MODEL": "minimax-m2.5:cloud"
           }
           EOF
         shell: bash
@@ -48,16 +48,16 @@ jobs:
       - name: Start Claude Code Router
         run: |
           nohup ~/.bun/bin/bunx @musistudio/claude-code-router@1.0.8 start &
+          sleep 5
         shell: bash
 
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
         env:
-          ANTHROPIC_BASE_URL: https://ollama.com
-          ANTHROPIC_AUTH_TOKEN: ollama # This value signals compatibility mode
+          ANTHROPIC_BASE_URL: http://localhost:3456
         with:
-          anthropic_api_key: ${{ secrets.OLLAMA_API_KEY }}
+          anthropic_api_key: "any-string-is-ok"
           additional_permissions: |
             actions: read
           # Pass custom instructions via prompt (appended to the user's prompt)
