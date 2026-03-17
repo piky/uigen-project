@@ -56,7 +56,7 @@ jobs:
 
       - name: Start Claude Code Router
         run: |
-          nohup ~/.bun/bin/bunx @musistudio/claude-code-router@1.0.8 start &
+          nohup ~/.bun/bin/bunx @musistudio/claude-code-router@2.0.0 start &
           sleep 5
         shell: bash
 
