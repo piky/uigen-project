@@ -38,9 +38,18 @@ jobs:
           {
             "log": true,
             "NON_INTERACTIVE_MODE": true,
-            "OLLAMA_API_KEY": "${{ secrets.OLLAMA_API_KEY }}",
-            "OPENAI_BASE_URL": "https://ollama.com",
-            "OPENAI_MODEL": "minimax-m2.5:cloud"
+            "APIKEY": "any-key",
+            "Providers": [                                                                    
+                    {                                                                               
+                      "name": "ollama",                                                             
+                      "baseUrl": "https://ollama.com/v1",                                           
+                      "apiKey": "${{ secrets.OLLAMA_API_KEY }}",                                    
+                      "models": ["minimax-m2.5:cloud"]                                              
+                    }                                                                               
+                  ],                                                                                
+                  "Router": {                                                                       
+                    "default": "ollama,minimax-m2.5:cloud"
+                  }   
           }
           EOF
         shell: bash

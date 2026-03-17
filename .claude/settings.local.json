@@ -1,6 +1,9 @@
 {
-    "permissions": {
-        "allow": ["mcp__playwright"],
-        "deny": []
-    }
+  "permissions": {
+    "allow": [
+      "mcp__playwright",
+      "mcp__context7__query-docs"
+    ],
+    "deny": []
+  }
 }
